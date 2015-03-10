@@ -1,0 +1,182 @@
+$columns: 12;
+
+@mixin grid-size($value) {
+  flex-basis: $value;
+  max-width: $value;
+}
+
+.grid {
+  box-sizing: border-box;
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  &-container {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  &.reverse { flex-direction: row-reverse; }
+  &-cell.reverse { flex-direction: column-reverse; }
+}
+
+@for $i from 1 through $columns {
+  .grid-cell-xs-#{ $i },
+  .grid-cell-xs-offset-#{ $i } {
+    @extend %grid-xs-list-styles;
+  }
+}
+
+%grid-xs-list-styles {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex: 0 1 auto;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.grid-cell-xs {
+  flex-grow: 1;
+  flex-basis: 0;
+  max-width: 100%;
+}
+
+@for $i from 1 through $columns {
+  $calc: ((100 / $columns) * $i) * 1%;
+
+  .grid-cell-xs-#{ $i } {
+    @include grid-size($calc);
+  }
+
+  .grid-cell-xs-offset-#{ $i } {
+    margin-left: $calc;
+  }
+}
+
+@media only screen and (min-width: 48em) {
+  .grid-container {
+    width: 60rem;
+  }
+
+  @for $i from 1 through $columns {
+    .grid-cell-sm-#{ $i },
+    .grid-cell-sm-offset-#{ $i } {
+      @extend %grid-sm-list-styles;
+    }
+  }
+
+  %grid-sm-list-styles {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex: 0 1 auto;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+
+  .grid-cell-sm {
+
+    flex-grow: 1;
+    flex-basis: 0;
+    max-width: 100%;
+  }
+
+  @for $i from 1 through $columns {
+    $calc: ((100 / $columns) * $i) * 1%;
+
+    .grid-cell-sm-#{ $i } {
+      @include grid-size($calc);
+    }
+
+    .grid-cell-sm-offset-#{ $i } {
+      margin-left: $calc;
+    }
+  }
+}
+
+@media only screen and (min-width: 62em) {
+  .grid-container {
+    width: 80rem;
+  }
+
+  @for $i from 1 through $columns {
+    .grid-cell-md-#{ $i },
+    .grid-cell-md-offset-#{ $i } {
+      @extend %grid-md-list-styles;
+    }
+  }
+
+  %grid-md-list-styles {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex: 0 1 auto;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+
+  .grid-cell-md {
+    flex-grow: 1;
+    flex-basis: 0;
+    max-width: 100%;
+  }
+
+  @for $i from 1 through $columns {
+    $calc: ((100 / $columns) * $i) * 1%;
+
+    .grid-cell-md-#{ $i } {
+      @include grid-size($calc);
+    }
+
+    .grid-cell-md-offset-#{ $i } {
+      margin-left: $calc;
+    }
+  }
+}
+
+@media only screen and (min-width: 75em) {
+  .grid-container {
+    width: 100rem;
+  }
+
+  @for $i from 1 through $columns {
+    .grid-cell-lg-#{ $i },
+    .grid-cell-lg-offset-#{ $i } {
+      @extend %grid-lg-list-styles;
+    }
+  }
+
+  %grid-lg-list-styles {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex: 0 1 auto;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+
+  .grid-cell-lg {
+    flex-grow: 1;
+    flex-basis: 0;
+    max-width: 100%;
+  }
+
+  @for $i from 1 through $columns {
+    $calc: ((100 / $columns) * $i) * 1%;
+
+    .grid-cell-lg-#{ $i } {
+      @include grid-size($calc);
+    }
+
+    .grid-cell-lg-offset-#{ $i } {
+      margin-left: $calc;
+    }
+  }
+}
+
+.grid-cell-content-center {
+  align-items: center;
+  justify-content: center;
+}
